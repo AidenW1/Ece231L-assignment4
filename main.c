@@ -1,3 +1,22 @@
+/*
+Assignment 4 ECE231L
+Aiden watt
+
+A grocery list of items creatting a custom data type "item list" that holds price sku
+category name and its index in a semi array type way
+
+then uses memory allocation to store all the data in a way that is not like java
+
+AI USE:
+used claude to translate between java code and C
+example: Systeme.out.printf("xyz",a,b,c); and its syntax
+
+Again all the malloc stuff because that just dosent make any sense to someone with dynamic
+memory allocation code skills and the ENTIRE free section again with memory allocation
+and not understanding any of it really
+
+again more syntaxing transfer from java to c
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,7 +26,7 @@ void add_item(Item *item_list, double price, char *sku, char *category, char *na
 void free_items(Item *item_list, int size);
 double average_price(Item *item_list,  int size);
 void print_items(Item *item_list, int size);
-
+//Main takes in command line args and then pulls up that item
 int main(int argc, char *argv[])
 {
 	int size = 5;
@@ -30,7 +49,7 @@ int main(int argc, char *argv[])
 	}else
 	{
 		int n = 0;
-
+//item searching for loop
 		while( n < size && strcmp(item_list[n].sku, argv[1]) != 0)
 		{
 			n++;
@@ -48,7 +67,7 @@ int main(int argc, char *argv[])
 	free_items(item_list, size);
 	return 0;
 }
-
+//item building method that is also allocating the memmory for each of the items and their chars
 void add_item(Item *item_list, double price, char *sku,  char *category, char *name, int index )
 {
 	item_list[index].price = price;
@@ -64,7 +83,8 @@ void add_item(Item *item_list, double price, char *sku,  char *category, char *n
 
 }
 
-
+//I honesly have no idea what this really does but
+//ai is telling me it just opens back up the memory of the pc
 void free_items(Item *item_list, int size)
 {
 	for(int i = 0; i < size; i++)
@@ -75,7 +95,7 @@ void free_items(Item *item_list, int size)
 	}
 	free(item_list);
 }
-
+//averages item price pretty simple method of adding then submtting
 double average_price(Item *item_list, int size)
 {
 	double adder = 0;
@@ -85,7 +105,9 @@ double average_price(Item *item_list, int size)
 	}
 	return adder/size;
 }
-
+//print method also as simple as they come kinda weird with the whole indexing and not creating
+//an array with all the item_list in it and just calling the whole datatype and print them formatted
+//but I think thats more advanced than this here
 void print_items(Item *item_list, int size)
 {
 	for (int i = 0; i < size; i++)
